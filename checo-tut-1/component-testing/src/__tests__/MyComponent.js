@@ -11,4 +11,7 @@ test('should properly show/hide a name when toggled', () => {
   expect(ToggleButton).toHaveTextContent('Show Name');
   fireEvent.click(ToggleButton);
   expect(getByTestId('name')).toHaveTextContent('dylan');
-})
+  rerender(<MyComponent />);
+  expect(ToggleButton).toHaveTextContent('No name Provided')
+  expect(getByTestId('name').nodeValue).toBeNull();
+});
